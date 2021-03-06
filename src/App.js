@@ -1,4 +1,4 @@
-import './App.scss';
+import './styles/App.scss';
 import firebase from './firebase-configs.js';
 
 function App() {
