@@ -1,11 +1,11 @@
 // sass
 import './styles/App.scss';
-// firebase
-import firebase from './firebase-configs.js';
+// data
+import firebase from './data/firebase-configs';
+import Character from './data/character';
 // hooks
 import { useEffect, useState } from 'react';
-// classma
-import Character from './Character.js';
+// components
 
 // firebase aliases
 // pathref for specifying paths, dbref for root
@@ -16,6 +16,21 @@ function App() {
 
   // empty array to hold character objects (see Character.js)
   const [characters, setCharacters] = useState([]);
+
+  const bepis = new Character({
+    name: 'bepis',
+    dndclass: 'wizard',
+    race: 'human',
+    background: 'sage',
+    level: 19,
+  });
+
+  console.log('bepis:', bepis);
+  
+  const bepisJSON = bepis.toJSON();
+  const bepis2 = new Character(bepisJSON);
+
+  console.log('bepis2:',bepis2);
 
   return (
     <>
