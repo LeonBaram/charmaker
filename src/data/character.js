@@ -1,16 +1,16 @@
 // data
 import descriptions from './descriptions';
 
+// the maximum level a D&D character can be
+const MAX_LEVEL = 20;
+
 /** class representing a simplified D&D 5e character */
 class Character {
-
-    // the maximum level a D&D character can be
-    MAX_LEVEL = 20;
 
     // a data structure storing this object's potential error messages
     errors = {
         MAX_LEVEL:
-`ERROR. Max Character level is 20.
+            `ERROR. Max Character level is 20.
 Level set to:`
     };
 
@@ -64,7 +64,7 @@ Level set to:`
             desc: descriptions.background[background]
         }
 
-        if (level > this.MAX_LEVEL) {
+        if (level > MAX_LEVEL) {
             this.dndclass.level = 1;
             console.log(
                 this.errors.MAX_LEVEL,
@@ -88,7 +88,7 @@ Level set to:`
     set level(level) {
 
         if (Number.isInteger(level) &&
-            level >= 1 && level <= this.MAX_LEVEL) {
+            level >= 1 && level <= MAX_LEVEL) {
             this.dndclass.level = level;
         } else {
             console.log(
@@ -128,3 +128,4 @@ Level set to:`
 }
 
 export default Character;
+export { MAX_LEVEL };
