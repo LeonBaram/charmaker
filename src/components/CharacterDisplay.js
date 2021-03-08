@@ -1,0 +1,4 @@
+function CharacterDisplay({ character }) {
+
+    
+}

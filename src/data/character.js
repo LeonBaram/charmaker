@@ -25,10 +25,10 @@ Level set to:`
      * 
      * {
      *   name: string,
+     *   level: number,
      *   dndclass: string,
      *   race: string,
      *   background: string,
-     *   level: number,
      * }
      * 
      * This cleans up the constructor call syntax (labelling each arg and 
@@ -85,7 +85,7 @@ Level set to:`
      * @param {number} level an integer between 1 and MAX_LEVEL (inclusive)
      * @returns true if the assignment went through, false otherwise
      */
-    get level(level) {
+    set level(level) {
 
         if (Number.isInteger(level) &&
             level >= 1 && level <= this.MAX_LEVEL) {
