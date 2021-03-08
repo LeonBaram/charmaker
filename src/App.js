@@ -34,11 +34,17 @@ function App() {
       <header>
         <h1>murderHobo</h1>
       </header>
+
       <h2>your characters. our website. let's make it happen.</h2>
+
       <button className="create">Create</button>
+
       <CharacterForm />
+
       <section className="characters">
-        {characters.map(character => <CharacterDisplay character={character} />)}
+        {characters.map(character =>
+          <CharacterDisplay character={character} />
+        )}
       </section>
     </>
   );
