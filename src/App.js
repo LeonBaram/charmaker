@@ -10,30 +10,36 @@ import CharacterForm from './components/CharacterForm';
 import CharacterDisplay from './components/CharacterDisplay';
 
 // firebase aliases
-// pathref for specifying paths, dbref for root
+// dbref for root, pathref for specifying paths
 const pathref = path => firebase.database().ref(path);
 const dbref = pathref();
 
-
 function App() {
-  
+
+  const [characters, setCharacters] = useState([]);
+
   useEffect(() => {
-    dbref.on('value', (data) => {
-  
+    pathref('characters').on('value', (response) => {
+      const data = response.val();
+      const tempCharacters = [];
+      for (let key in data) {
+        tempCharacters.push(new Character(data[key]));
+      }
+      setCharacters(tempCharacters);
     })
   }, []);
 
-  const gary = new Character({
-    name: 'gary',
-    level: 5,
-    race: 'human',
-    dndclass: 'wizard',
-    background: 'criminal'
-  });
-
   return (
     <>
-    <CharacterForm/>
+      <header>
+        <h1>murderHobo</h1>
+      </header>
+      <h2>your characters. our website. let's make it happen.</h2>
+      <button className="create">Create</button>
+      <CharacterForm />
+      <section className="characters">
+        {characters.map(character => <CharacterDisplay character={character} />)}
+      </section>
     </>
   );
 }
