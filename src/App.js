@@ -35,7 +35,7 @@ function App() {
         <h1>murderHobo</h1>
       </header>
 
-      <h2>your characters. our website. let's make it happen.</h2>
+      <h2>the world's simplest D&D character creator.</h2>
 
       <button className="create">Create</button>
 

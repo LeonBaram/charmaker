@@ -1,9 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Character from '../data/character';
 import descriptions from '../data/descriptions';
 import {MAX_LEVEL} from '../data/character';
 
 function CharacterForm() {
+
+    const [charRef, setCharRef] = useState({});
+
+    const uploadCharacter = () => console.log('hi');
 
     return (
         <form className='character-form'>
@@ -12,7 +16,14 @@ function CharacterForm() {
             <input type="text" id="name" class="name" />
 
             <label htmlFor="level" className="sr-only">Level (between 1 and {MAX_LEVEL}):</label>
-            <input type="number" id="level" class="level" />
+            <input 
+                type="number" 
+                id="level" 
+                class="level"
+                max="20"
+                min="1"
+                // value="1"
+            />
 
             {/* generate dropdowns from predefined list of classes/races/etc */}
             {Object.keys(descriptions).map(key => (
@@ -29,7 +40,9 @@ function CharacterForm() {
             ))}
 
             <button id="cancel" class="cancel">Cancel</button>
-            <button id="save" className="save">Save</button>
+            <button id="save" className="save" onClick={uploadCharacter}>
+                Save
+            </button>
 
         </form>
     );
