@@ -1,2 +1,3 @@
-- [ ] get font (ubuntu)
+- [X] get font (ubuntu)
 - [ ] get icon (chevron down)
+- [ ] move fonts to local folder (WiP)
