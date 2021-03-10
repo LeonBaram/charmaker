@@ -23,7 +23,7 @@ Level set to:`
      * create a Character
      * 
      * NOTE:
-     * rather than taking params directly, this constructor takes a "compressedCharacter" object:
+     * rather than taking params directly, this constructor takes a characterInfo object:
      * 
      * {
      *   name: string,
@@ -38,7 +38,7 @@ Level set to:`
      * Character instance representation, mainly for the benefit of Firebase's 
      * Real-Time Database (which stores objects in JSON).
      * 
-     * @param {object} compressedCharacter an object containing the specified properties
+     * @param {object} characterInfo an object containing the specified properties
      *  @property {string} name a name for this character
      *  @property {number} level a starting level (no more than MAX_LEVEL)
      *  @property {string} dndclass a D&D class (e.g. "wizard")
@@ -113,9 +113,9 @@ Level set to:`
 
     /**
      * @function toJSON
-     * converts a Character instance into a JSON-compatible compressedCharacter 
-     * representation
-     * @returns {object} a compressedCharacter representation of this Character 
+     * converts a Character object into a JSON-compatible characterInfo 
+     * object
+     * @returns {object} a characterInfo object representing this Character 
      * object
      */
     toJSON() {

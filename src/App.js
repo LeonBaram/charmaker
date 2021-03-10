@@ -2,6 +2,7 @@
 import './styles/App.scss';
 // data
 import firebase from './data/firebase';
+import { dbref } from './data/firebase';
 import Character from './data/character';
 import { randomCharacter } from './data/character';
 // hooks
@@ -10,21 +11,21 @@ import { useEffect, useState } from 'react';
 import CharacterForm from './components/CharacterForm';
 import CharacterDisplay from './components/CharacterDisplay';
 
-// firebase aliases
-// dbref for root, pathref for specifying paths
-const pathref = path => firebase.database().ref(path);
-const dbref = pathref();
-
 function App() {
 
   const [characters, setCharacters] = useState([]);
 
+  const [formVisible, setFormVisible] = useState(false);
+
   useEffect(() => {
-    pathref('characters').on('value', (response) => {
+    dbref.characters.on('value', (response) => {
       const data = response.val();
       const tempCharacters = [];
+      let character;
       for (let key in data) {
-        tempCharacters.push(new Character(data[key]));
+        character = new Character(data[key]);
+        character.firebaseID = key;
+        tempCharacters.push(character);
       }
       setCharacters(tempCharacters);
     })
@@ -38,12 +39,21 @@ function App() {
             <h1>murderHobo</h1>
             <h2>a simple character creator</h2>
           </div>
-          <button className="create">Create +</button>
+          <button
+            className="create"
+            onClick={() => {
+              setFormVisible(true);
+              console.log(formVisible);
+            }}
+          >
+            Create +
+          </button>
         </div>
       </header>
       <main>
         <div className="wrapper">
-          <CharacterForm />
+
+          {formVisible ? <CharacterForm /> : <></>}
 
           <section className="characters">
             {characters.map(character =>

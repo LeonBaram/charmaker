@@ -12,5 +12,14 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+// firebase alias
+const pathref = path => firebase.database().ref(path);
+
+// static aliases for pathref (alias^2)
+const dbref = {
+  root: pathref(),
+  characters: pathref('characters'),
+}
 
 export default firebase;
+export { dbref, pathref };

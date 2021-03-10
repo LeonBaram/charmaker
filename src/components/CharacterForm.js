@@ -1,66 +1,138 @@
+// hooks
 import { useEffect, useState } from 'react';
+// data
 import Character from '../data/character';
 import descriptions from '../data/descriptions';
 import { MAX_LEVEL } from '../data/character';
+// utils
+import rand from '../utils/rand';
 
 function CharacterForm() {
 
-    const [charRef, setCharRef] = useState({});
+  // generate random default values for each characterInfo field (assumed to be same as form fields)
+  const defaultValues = {
+    name: 'Gary Gygax',
+    level: Math.ceil(Math.random() * MAX_LEVEL),
+  };
+  let keyArray;
+  for (let category in descriptions) {
 
-    const uploadCharacter = () => console.log('hi');
+    keyArray = Object.keys(descriptions[category]);
+    defaultValues[category] = rand(...keyArray);
+  }
 
-    return (
-        <form className='modal character-form'>
+  /* 
+  a characterInfo object (see src/data/character.js),
+  whose fields update live with user dropdown selections.
+  if the user submits the form, this object is pushed to the database.
+  */
+  const [characterInfo, setCharacterInfo] = useState(defaultValues);
 
-            <h2>A New Murder Hobo Rises</h2>
-            <hr />
+  const uploadCharacter = () => console.log('hi');
 
-            <label htmlFor="name">Name: </label>
-            <input
-                type="text"
-                id="name"
-                className="name"
-                placeholder="Gary Gygax"
+  return (
+    <div className="modal">
+      <section className='character-form'>
+
+        <h2>A New Murder Hobo Rises</h2>
+        <hr />
+        <form>
+
+          <label htmlFor="name">Name:</label>
+
+          <input
+            required
+            type="text"
+            id="name"
+            className="name"
+            placeholder="Gary Gygax"
+
+            // bindings
+            value={characterInfo.name}
+            onChange={e => setCharacterInfo(
+              { ...characterInfo, name: e.target.value }
+            )}
+          />
+
+          <label htmlFor="level">Level (1 - {MAX_LEVEL}):</label>
+          <input
+            required
+            type="number"
+            id="level"
+            className="level"
+            max="20"
+            min="1"
+            placeholder="1"
+
+            // bindings
+            value={characterInfo.level}
+            onChange={e => setCharacterInfo(
+              { ...characterInfo, level: e.target.value }
+            )}
+          />
+
+          {/* 1.for each category (class, race, etc), generate a dropdown
+              2.for each dropdown, generate a list of options 
+                (human, elf, etc) 
+              3.for each category, generate a description of the 
+                currently selected dropdown option */}
+          {Object.keys(descriptions).map(category => (
+            // loops through 1st layer of descriptions -- dndclass, race, etc
+            <>
+              <label htmlFor={category}>
+                {/* switch "dndclass" to "class" when presenting to user */}
+                {category === 'dndclass' ? 'class' : category}:
+              </label>
+
+              <select
                 required
-            />
+                id={category}
 
-            <label htmlFor="level">Level (1 - {MAX_LEVEL}):</label>
-            <input
-                type="number"
-                id="level"
-                className="level"
-                max="20"
-                min="1"
-                placeholder="1"
-                required
-            />
+                // bindings
+                value={characterInfo[category]}
+                onChange={e => setCharacterInfo(
+                  { ...characterInfo, [category]: e.target.value }
+                )}
+              >
 
-            {/* 1. for each category (class, race, etc), generate a dropdown
-                    2. for each dropdown, generate a list of options 
-                    (human, elf, etc) */}
-            {Object.keys(descriptions).map(category => (
-                // (key can be "dndclass", "race", etc)
+                {/* 
+                1. access descriptions[category] (e.g. descriptions['race'])
+                2. turn the keys found there into an array 
+                (e.g. ['human', 'elf', 'dwarf', 'halfling']) 
+                3. sort that array (returns sorted array)
+                4. display each element as option in dropdown
+                */}
+                {Object.keys(descriptions[category]).sort().map(
+                  element => (
+                    // (element can be 'human', 'elf', etc)
+                    <option value={element}>
+                      {element}
+                    </option>
+                  )
+                )}
+              </select>
 
-                <>
-                    <label htmlFor={category}>{category}</label>
-                    <select name={category} id={category} required>
+              <p>{descriptions[category][characterInfo[category]]}</p>
+            </>
+          ))}
 
-                        {Object.keys(descriptions[category]).map(subkey => (
-                            // (subkey can be "fighter", "wizard", etc)
-
-                            <option value={subkey}>{subkey}</option>
-                        ))}
-                    </select>
-                </>
-            ))}
-
-            <button id="cancel" className="cancel">Cancel</button>
-            <button id="save" className="save" onClick={uploadCharacter}>
-                Save
-            </button>
-
+          <button
+            id="cancel"
+            className="cancel"
+          >
+            Cancel
+                    </button>
+          <button
+            id="save"
+            className="save"
+            onClick={uploadCharacter}
+          >
+            Save
+                    </button>
         </form>
-    );
+      </section>
+    </div>
+  );
 }
 
 export default CharacterForm;

@@ -4,13 +4,29 @@ select {
   appearance: none;
 }
 
+
 .modal {
-  display: none;
+  display: block; 
   position: fixed;
-  z-index: 1;
+  z-index: 1; 
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
+  background: rgba(100,100,100,0.5);
+
+  .character-form {
+    margin: 15% auto;
+    padding: 20px;
+    border: 3px solid $dark-grey;
+    width: 50%;
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 20px;
+    justify-items: center;
+  }
 }
