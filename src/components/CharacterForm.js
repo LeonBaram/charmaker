@@ -1,7 +1,7 @@
 // hooks
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 // data
-import Character from '../data/character';
+import { dbref } from '../data/firebase';
 import descriptions from '../data/descriptions';
 import { MAX_LEVEL } from '../data/character';
 // utils
@@ -28,7 +28,7 @@ function CharacterForm() {
   */
   const [characterInfo, setCharacterInfo] = useState(defaultValues);
 
-  const uploadCharacter = () => console.log('hi');
+  const uploadCharacter = () => dbref.characters.push(characterInfo);
 
   return (
     <div className="modal">

@@ -15,10 +15,15 @@ firebase.initializeApp(firebaseConfig);
 // firebase alias
 const pathref = path => firebase.database().ref(path);
 
-// static aliases for pathref (alias^2)
-const dbref = {
-  root: pathref(),
-  characters: pathref('characters'),
+// list of database sections (more coming soon!)
+const dbSections = [
+  'characters',
+];
+
+// static aliases for pathref based on db sections
+const dbref = {root: pathref()};
+for (let section of dbSections) {
+  dbref[section] = pathref(section);
 }
 
 export default firebase;

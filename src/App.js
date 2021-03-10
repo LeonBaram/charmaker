@@ -1,10 +1,8 @@
 // sass
 import './styles/App.scss';
 // data
-import firebase from './data/firebase';
 import { dbref } from './data/firebase';
 import Character from './data/character';
-import { randomCharacter } from './data/character';
 // hooks
 import { useEffect, useState } from 'react';
 // components
