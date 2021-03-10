@@ -35,9 +35,6 @@ function App() {
       <header>
         <div className="wrapper">
           <h1>murderHobo</h1>
-        </div>
-        <hr />
-        <div className="wrapper">
           <h2>a simple character creator</h2>
           <button className="create">Create</button>
         </div>
@@ -54,7 +51,6 @@ function App() {
         </div>
       </main>
       <footer>
-        <hr />
         <div className="wrapper">
           <p>made at <a href="https://junocollege.com/">Juno</a></p>
           <p>Dungeons and Dragons belongs to <a href="https://company.wizards.com/en">Wizard of the Coast</a>. <br />

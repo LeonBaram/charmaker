@@ -24,8 +24,8 @@ hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
+    border-top: 1px solid $light-grey;
+    margin: 0;
     padding: 0;
 }
 
@@ -34,6 +34,7 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
+    border-bottom: 1px solid $light-grey;
 }
 
 // TO BE MOVED
@@ -51,4 +52,5 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    border-top: 1px solid $light-grey;
 }
