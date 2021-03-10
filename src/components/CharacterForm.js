@@ -10,7 +10,7 @@ function CharacterForm() {
     const uploadCharacter = () => console.log('hi');
 
     return (
-        <form className='character-form'>
+        <form className='modal character-form'>
 
             <h2>A New Murder Hobo Rises</h2>
             <hr />

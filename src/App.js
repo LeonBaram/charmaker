@@ -34,9 +34,11 @@ function App() {
     <>
       <header>
         <div className="wrapper">
-          <h1>murderHobo</h1>
-          <h2>a simple character creator</h2>
-          <button className="create">Create</button>
+          <div className="heading-block">
+            <h1>murderHobo</h1>
+            <h2>a simple character creator</h2>
+          </div>
+          <button className="create">Create +</button>
         </div>
       </header>
       <main>

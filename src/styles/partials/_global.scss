@@ -9,11 +9,6 @@ $grey: #ABABAB;
 $dark-grey: #333333;
 $black: black;
 
-// TEMPORARY
-form, form * {
-    display: none;
-}
-
 .wrapper {
     max-width: 1200px;
     width: 90%;
@@ -29,12 +24,8 @@ hr {
     padding: 0;
 }
 
-// TO BE MOVED
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    border-bottom: 1px solid $light-grey;
+button {
+    all: unset;
 }
 
 // TO BE MOVED

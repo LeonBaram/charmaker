@@ -1,0 +1,42 @@
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-bottom: 1px solid $light-grey;
+
+    .wrapper {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    .heading-block {
+        padding: 0;
+        h1 {
+            margin-bottom: 5px;
+        }
+        h2 {
+            margin: 0;
+        }
+    }
+
+    button.create {
+        border: 1px solid $white;
+        border-radius: 3px;
+        margin-right: 37.5vw;
+        transition: all 0.5s;
+
+        &:hover {
+            border: 1px solid $grey;
+            background: $grey;
+            color: $white;
+        }
+
+        &:active, &:focus {
+            border: 1px solid $black;
+            background: $black;
+            color: $white;
+            transform: translate(0, 20px);
+        }
+    }
+}
