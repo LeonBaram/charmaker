@@ -8,3 +8,47 @@ $light-grey: #C1C1C1;
 $grey: #ABABAB;
 $dark-grey: #333333;
 $black: black;
+
+// TEMPORARY
+form, form * {
+    display: none;
+}
+
+.wrapper {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+// TO BE MOVED
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+// TO BE MOVED
+main {
+    margin: 150px 0;
+
+    section.characters {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+// TO BE MOVED
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

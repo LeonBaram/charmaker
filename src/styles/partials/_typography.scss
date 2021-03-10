@@ -35,15 +35,20 @@ form h2 {
   text-align: center;
 }
 
-h3 {
-  // font: 1.8rem $ubuntu;
-  font-size: 1.8rem;
-  text-align: center;
-}
+.character {  
 
-h4 {
-  font-weight: $bold;
-  text-align: center;
+  h3 {
+    // font: 1.8rem $ubuntu;
+    font-size: 1.8rem;
+    text-align: center;
+    text-transform: capitalize;
+  }
+  
+  h4 {
+    font-weight: $bold;
+    text-align: center;
+    text-transform: capitalize;
+  }
 }
 
 label {
