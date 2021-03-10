@@ -51,7 +51,10 @@ function App() {
       <main>
         <div className="wrapper">
 
-          {formVisible ? <CharacterForm /> : <></>}
+          <CharacterForm 
+            formVisible={formVisible} 
+            setFormVisible={setFormVisible}
+          />
 
           <section className="characters">
             {characters.map(character =>

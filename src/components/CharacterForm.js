@@ -6,12 +6,15 @@ import descriptions from '../data/descriptions';
 import { MAX_LEVEL } from '../data/character';
 // utils
 import rand from '../utils/rand';
+// 3rd party
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 
-function CharacterForm() {
+function CharacterForm({ formVisible, setFormVisible }) {
 
   // generate random default values for each characterInfo field (assumed to be same as form fields)
   const defaultValues = {
-    name: 'Gary Gygax',
+    name: '',
     level: Math.ceil(Math.random() * MAX_LEVEL),
   };
   let keyArray;
@@ -31,7 +34,11 @@ function CharacterForm() {
   const uploadCharacter = () => dbref.characters.push(characterInfo);
 
   return (
-    <div className="modal">
+    <Modal
+      open={formVisible}
+      onClose={() => setFormVisible(false)}
+      classNames={{ modal: 'modal', overlay: 'customOverlay' }}
+    >
       <section className='character-form'>
 
         <h2>A New Murder Hobo Rises</h2>
@@ -54,22 +61,23 @@ function CharacterForm() {
             )}
           />
 
-          <label htmlFor="level">Level (1 - {MAX_LEVEL}):</label>
-          <input
-            required
-            type="number"
-            id="level"
-            className="level"
-            max="20"
-            min="1"
-            placeholder="1"
+          <label htmlFor="level">Level (1 - {MAX_LEVEL}):
+            <input
+              required
+              type="number"
+              id="level"
+              className="level"
+              max="20"
+              min="1"
+              placeholder="1"
 
-            // bindings
-            value={characterInfo.level}
-            onChange={e => setCharacterInfo(
-              { ...characterInfo, level: e.target.value }
-            )}
-          />
+              // bindings
+              value={characterInfo.level}
+              onChange={e => setCharacterInfo(
+                { ...characterInfo, level: e.target.value }
+              )}
+            />
+          </label>
 
           {/* 1.for each category (class, race, etc), generate a dropdown
               2.for each dropdown, generate a list of options 
@@ -84,34 +92,37 @@ function CharacterForm() {
                 {category === 'dndclass' ? 'class' : category}:
               </label>
 
-              <select
-                required
-                id={category}
+              <div className="grid-cell">
+                <select
+                  required
+                  id={category}
 
-                // bindings
-                value={characterInfo[category]}
-                onChange={e => setCharacterInfo(
-                  { ...characterInfo, [category]: e.target.value }
-                )}
-              >
+                  // bindings
+                  value={characterInfo[category]}
+                  onChange={e => setCharacterInfo(
+                    { ...characterInfo, [category]: e.target.value }
+                  )}
+                >
 
-                {/* 
+                  {/* 
                 1. access descriptions[category] (e.g. descriptions['race'])
                 2. turn the keys found there into an array 
                 (e.g. ['human', 'elf', 'dwarf', 'halfling']) 
                 3. sort that array (returns sorted array)
                 4. display each element as option in dropdown
                 */}
-                {Object.keys(descriptions[category]).sort().map(
-                  element => (
-                    // (element can be 'human', 'elf', etc)
-                    <option value={element}>
-                      {element}
-                    </option>
-                  )
-                )}
-              </select>
+                  {Object.keys(descriptions[category]).sort().map(
+                    element => (
+                      // (element can be 'human', 'elf', etc)
+                      <option value={element}>
+                        {element}
+                      </option>
+                    )
+                  )}
+                </select>
+              </div>
 
+              {/* e.g. descriptions['race']['elf'] */}
               <p>{descriptions[category][characterInfo[category]]}</p>
             </>
           ))}
@@ -131,7 +142,7 @@ function CharacterForm() {
                     </button>
         </form>
       </section>
-    </div>
+    </Modal>
   );
 }
 
