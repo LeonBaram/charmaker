@@ -32,13 +32,16 @@ function App() {
   return (
     <>
       <header>
-        <h1>murderHobo</h1>
+        <div className="wrapper">
+          <h1>murderHobo</h1>
+        </div>
+        <hr />
+        <div className="wrapper">
+          <h2>the world's simplest D&D character creator</h2>
+          <button className="create">Create</button>
+        </div>
       </header>
-
-      <h2>the world's simplest D&D character creator.</h2>
-
-      <button className="create">Create</button>
-
+      <main>
       <CharacterForm />
 
       <section className="characters">
@@ -46,6 +49,14 @@ function App() {
           <CharacterDisplay character={character} />
         )}
       </section>
+      </main>
+      <footer>
+        <hr/>
+        <p>made at <a href="https://junocollege.com/">Juno</a></p>
+        <p>Dungeons and Dragons belongs to <a href="https://company.wizards.com/en">Wizard of the Coast</a>. <br/> 
+        check out their D&D website, <a href="https://www.dndbeyond.com/">dndbeyond</a>.
+        </p>
+      </footer>
     </>
   );
 }

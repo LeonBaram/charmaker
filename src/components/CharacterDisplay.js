@@ -8,6 +8,7 @@ function CharacterDisplay({ character }) {
             <h3>
                 {character.name}, level {character.level} {character.race.name} {character.dndclass.name}
             </h3>
+            <hr/>
             <h4>Aptitudes</h4>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur praesentium facere nam quidem obcaecati saepe consequatur repudiandae esse commodi laudantium.</p>
             <h4>Background: {character.background.name}</h4>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Character from '../data/character';
 import descriptions from '../data/descriptions';
-import {MAX_LEVEL} from '../data/character';
+import { MAX_LEVEL } from '../data/character';
 
 function CharacterForm() {
 
@@ -10,41 +10,58 @@ function CharacterForm() {
     const uploadCharacter = () => console.log('hi');
 
     return (
-        <form className='character-form'>
+        <>
+            <h2>A New Murder Hobo Rises</h2>
+            <hr/>
 
-            <label htmlFor="name" className="sr-only">Name:</label>
-            <input type="text" id="name" class="name" />
+            <form className='character-form'>
 
-            <label htmlFor="level" className="sr-only">Level (between 1 and {MAX_LEVEL}):</label>
-            <input 
-                type="number" 
-                id="level" 
-                class="level"
-                max="20"
-                min="1"
-                // value="1"
-            />
+                <label htmlFor="name">Name: </label>
+                <input 
+                    type="text" 
+                    id="name" 
+                    className="name" 
+                    placeholder="Gary Gygax"
+                    required
+                />
 
-            {/* generate dropdowns from predefined list of classes/races/etc */}
-            {Object.keys(descriptions).map(key => (
-                // (key can be "dndclass", "race", etc)
+                <label htmlFor="level">Level (1 - {MAX_LEVEL}):</label>
+                <input
+                    type="number"
+                    id="level"
+                    className="level"
+                    max="20"
+                    min="1"
+                    placeholder="1"
+                    required
+                />
 
-                <select name={key} id={key}>
+                {/* 1. for each category (class, race, etc), generate a dropdown
+                    2. for each dropdown, generate a list of options 
+                    (human, elf, etc) */}
+                {Object.keys(descriptions).map(category => (
+                    // (key can be "dndclass", "race", etc)
 
-                    {Object.keys(descriptions[key]).map(subkey => (
-                        // (subkey can be "fighter", "wizard", etc)
+                    <>
+                    <label htmlFor={category}>{category}</label>
+                    <select name={category} id={category} required>
 
-                        <option value={subkey}>{subkey}</option>
-                    ))}
-                </select>
-            ))}
+                        {Object.keys(descriptions[category]).map(subkey => (
+                            // (subkey can be "fighter", "wizard", etc)
 
-            <button id="cancel" class="cancel">Cancel</button>
-            <button id="save" className="save" onClick={uploadCharacter}>
-                Save
+                            <option value={subkey}>{subkey}</option>
+                        ))}
+                    </select>
+                    </>
+                ))}
+
+                <button id="cancel" className="cancel">Cancel</button>
+                <button id="save" className="save" onClick={uploadCharacter}>
+                    Save
             </button>
 
-        </form>
+            </form>
+        </>
     );
 }
 
