@@ -1,5 +1,7 @@
 // data
 import descriptions from './descriptions';
+// utils
+import rand from '../utils/rand';
 
 // the maximum level a D&D character can be
 const MAX_LEVEL = 20;
@@ -127,5 +129,21 @@ Level set to:`
     }
 }
 
+const randomCharacter = () => {
+    const name = "Gary Gygax";
+    const level = Math.ceil(Math.random() * MAX_LEVEL);
+    const dndclass = rand(...Object.keys(descriptions.dndclass));
+    const race = rand(...Object.keys(descriptions.race));
+    const background = rand(...Object.keys(descriptions.background));
+
+    return new Character({
+        name: name,
+        level: level,
+        dndclass: dndclass,
+        race: race,
+        background: background,
+    });
+}
+
 export default Character;
-export { MAX_LEVEL };
+export { MAX_LEVEL, randomCharacter };

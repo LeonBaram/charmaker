@@ -10,39 +10,38 @@ function CharacterForm() {
     const uploadCharacter = () => console.log('hi');
 
     return (
-        <>
+        <form className='character-form'>
+
             <h2>A New Murder Hobo Rises</h2>
-            <hr/>
+            <hr />
 
-            <form className='character-form'>
+            <label htmlFor="name">Name: </label>
+            <input
+                type="text"
+                id="name"
+                className="name"
+                placeholder="Gary Gygax"
+                required
+            />
 
-                <label htmlFor="name">Name: </label>
-                <input 
-                    type="text" 
-                    id="name" 
-                    className="name" 
-                    placeholder="Gary Gygax"
-                    required
-                />
+            <label htmlFor="level">Level (1 - {MAX_LEVEL}):</label>
+            <input
+                type="number"
+                id="level"
+                className="level"
+                max="20"
+                min="1"
+                placeholder="1"
+                required
+            />
 
-                <label htmlFor="level">Level (1 - {MAX_LEVEL}):</label>
-                <input
-                    type="number"
-                    id="level"
-                    className="level"
-                    max="20"
-                    min="1"
-                    placeholder="1"
-                    required
-                />
-
-                {/* 1. for each category (class, race, etc), generate a dropdown
+            {/* 1. for each category (class, race, etc), generate a dropdown
                     2. for each dropdown, generate a list of options 
                     (human, elf, etc) */}
-                {Object.keys(descriptions).map(category => (
-                    // (key can be "dndclass", "race", etc)
+            {Object.keys(descriptions).map(category => (
+                // (key can be "dndclass", "race", etc)
 
-                    <>
+                <>
                     <label htmlFor={category}>{category}</label>
                     <select name={category} id={category} required>
 
@@ -52,16 +51,15 @@ function CharacterForm() {
                             <option value={subkey}>{subkey}</option>
                         ))}
                     </select>
-                    </>
-                ))}
+                </>
+            ))}
 
-                <button id="cancel" className="cancel">Cancel</button>
-                <button id="save" className="save" onClick={uploadCharacter}>
-                    Save
+            <button id="cancel" className="cancel">Cancel</button>
+            <button id="save" className="save" onClick={uploadCharacter}>
+                Save
             </button>
 
-            </form>
-        </>
+        </form>
     );
 }
 
