@@ -34,39 +34,50 @@ input {
 //   }
 // }
 
-.customOverlay {
-  background: $grey;
-}
-
 .modal {
 
   border: solid 3px $dark-grey;
+  width: 75%;
 
   h2 {
+    margin-top: 10px;
     text-align: center;
   }
 
   hr {
-
+    margin-bottom: 20px;
   }
 
   form {
+    width: 75%;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 2fr;
-    gap: 20px;
+    grid-template-columns: 1fr 1fr 4fr;
+    gap: 10px;
     justify-content: space-around;
-    justify-items: center;
+    // justify-items: center;
+    align-items: start;
     
     label {
-      width: 100%;
       text-align: right;
+    }
+
+    input {
+      width: 100px;
     }
   
     select {
-      width: 100%;
+      border-radius: 3px;
+      // width: 100%;
       text-align: center;
       background: $dark-grey;
       color: $white;
+    }
+
+    p {
+      width: 200px;
+      position: relative;
+      top: -10px;
     }
   }
 }
