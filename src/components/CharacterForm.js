@@ -3,33 +3,20 @@ import { useState } from 'react';
 // data
 import { dbref } from '../data/firebase';
 import descriptions from '../data/descriptions';
-import { MAX_LEVEL } from '../data/character';
-// utils
-import rand from '../utils/rand';
+import { MAX_LEVEL, randomCharacterInfo } from '../data/character';
 // 3rd party
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 
 function CharacterForm({ formVisible, setFormVisible }) {
 
-  // generate random default values for each characterInfo field (assumed to be same as form fields)
-  const defaultValues = {
-    name: '',
-    level: Math.ceil(Math.random() * MAX_LEVEL),
-  };
-  let keyArray;
-  for (let category in descriptions) {
-
-    keyArray = Object.keys(descriptions[category]);
-    defaultValues[category] = rand(...keyArray);
-  }
-
   /* 
   a characterInfo object (see src/data/character.js),
   whose fields update live with user dropdown selections.
   if the user submits the form, this object is pushed to the database.
+  for convenience and humor reasons, initial states are set to random values.
   */
-  const [characterInfo, setCharacterInfo] = useState(defaultValues);
+  const [characterInfo, setCharacterInfo] = useState(randomCharacterInfo(''));
 
   const uploadCharacter = () => dbref.characters.push(characterInfo);
 
@@ -138,6 +125,7 @@ function CharacterForm({ formVisible, setFormVisible }) {
           onClick={() => {
             if (characterInfo.name) {
               uploadCharacter();
+              setCharacterInfo(randomCharacterInfo(''));
               setFormVisible(false);
             }
           }}
