@@ -75,8 +75,7 @@ function CharacterForm({ formVisible, setFormVisible }) {
               3.for each category, generate a description of the 
                 currently selected dropdown option */}
           {Object.keys(descriptions).map(category => (
-            // loops through 1st layer of descriptions -- dndclass, race, etc
-            <>
+            <div key={category}>
               <label htmlFor={category}>
                 {/* switch "dndclass" to "class" when presenting to user */}
                 {category === 'dndclass' ? 'class' : category}:
@@ -104,7 +103,7 @@ function CharacterForm({ formVisible, setFormVisible }) {
                   {Object.keys(descriptions[category]).sort().map(
                     element => (
                       // (element can be 'human', 'elf', etc)
-                      <option value={element}>
+                      <option value={element} key={element}>
                         {element}
                       </option>
                     )
@@ -114,7 +113,7 @@ function CharacterForm({ formVisible, setFormVisible }) {
 
               {/* e.g. descriptions['race']['elf'] */}
               <p>{descriptions[category][characterInfo[category]]}</p>
-            </>
+            </div>
           ))}
 
         </form>

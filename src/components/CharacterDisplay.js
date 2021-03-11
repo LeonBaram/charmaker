@@ -1,7 +1,5 @@
 function CharacterDisplay({ character }) {
 
-    const summary = "";
-
     return (
         <div className="character">
           <div className="wrapper">
@@ -11,7 +9,8 @@ function CharacterDisplay({ character }) {
             </h3>
             <hr />
             <h4>Aptitudes</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur praesentium facere nam quidem obcaecati saepe consequatur repudiandae esse commodi laudantium.</p>
+            <p>{character.dndclass.description}</p>
+            <p>{character.race.description}</p>
             <h4>Background: {character.background.name}</h4>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis quibusdam itaque eligendi iure libero laboriosam reprehenderit nihil ea adipisci odit.</p>
           </div>

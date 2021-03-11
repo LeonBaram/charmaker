@@ -29,12 +29,12 @@ header {
     cursor: pointer;
 
     &:hover {
-      background: $black;
+      background: $dark-grey;
       color: $white;
     }
 
     &.pressed {
-      border: 1px solid $black;
+      border: 1px solid $dark-grey;
       background: $black;
       color: $white;
       transform: translate(0, 20px);
