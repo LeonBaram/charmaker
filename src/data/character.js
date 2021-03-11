@@ -129,8 +129,17 @@ Level set to:`
   }
 }
 
-const randomCharacterInfo = (name = "Gary Gygax") => ({
-  name: name,
+const names = [
+  'Orville',
+  'Jennine',
+  'Cindi',
+  'Kori',
+  'Mari',
+  'Gary',
+];
+
+const randomCharacterInfo = (name) => ({
+  name: (name)? name : rand(...names),
   level: Math.ceil(Math.random() * MAX_LEVEL),
   dndclass: rand(...Object.keys(descriptions.dndclass)),
   race: rand(...Object.keys(descriptions.race)),

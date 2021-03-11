@@ -29,7 +29,6 @@ function CharacterForm({ formVisible, setFormVisible }) {
       <section className='character-form'>
 
         <h2>A New Murder Hobo Rises</h2>
-        <hr />
         <form>
 
           <label htmlFor="name">Name:</label>
