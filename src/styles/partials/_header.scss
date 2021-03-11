@@ -26,6 +26,7 @@ header {
     border-radius: 3px;
     margin-right: 37.5vw;
     transition: all 0.3s;
+    cursor: pointer;
 
     &:hover {
       border: 1px solid $grey;
