@@ -1,6 +1,7 @@
 // data
 import { dbref } from './data/firebase';
 import Character from './data/character';
+import { randomCharacterInfo } from './data/character';
 // hooks
 import { useEffect, useState } from 'react';
 // components
@@ -38,7 +39,7 @@ function App() {
             <h2>a simple character creator</h2>
           </div>
           <button
-            className={`create${formVisible? ' pressed' : ''}`}
+            className={`create${formVisible ? ' pressed' : ''}`}
             onClick={() => {
               setFormVisible(true);
               console.log(formVisible);
@@ -46,14 +47,13 @@ function App() {
           >
             Create +
           </button>
-          
         </div>
       </header>
       <main>
         <div className="wrapper">
 
-          <CharacterForm 
-            formVisible={formVisible} 
+          <CharacterForm
+            formVisible={formVisible}
             setFormVisible={setFormVisible}
           />
 
