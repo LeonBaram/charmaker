@@ -46,7 +46,8 @@ function CharacterForm({ formVisible, setFormVisible }) {
               { ...characterInfo, name: e.target.value }
             )}
           />
-
+          
+          {/* my greatest shame. exists purely to make css grid work. */}
           <div className="grid-filler"></div>
 
           <label htmlFor="level">Level (1-{MAX_LEVEL}):</label>
@@ -67,6 +68,7 @@ function CharacterForm({ formVisible, setFormVisible }) {
             )}
           />
 
+          {/* my greatest shame. exists purely to make css grid work. */}
           <div className="grid-filler"></div>
 
           {/* 1.for each category (class, race, etc), generate a dropdown
