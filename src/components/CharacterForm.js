@@ -37,7 +37,7 @@ function CharacterForm({ formVisible, setFormVisible }) {
     <Modal
       open={formVisible}
       onClose={() => setFormVisible(false)}
-      classNames={{ modal: 'modal', overlay: 'customOverlay' }}
+      classNames={{ modal: 'modal', overlay: 'overlay' }}
     >
       <section className='character-form'>
 
@@ -61,23 +61,27 @@ function CharacterForm({ formVisible, setFormVisible }) {
             )}
           />
 
-          <label htmlFor="level">Level (1 - {MAX_LEVEL}):
-            <input
-              required
-              type="number"
-              id="level"
-              className="level"
-              max="20"
-              min="1"
-              placeholder="1"
+          <div className="grid-filler"></div>
 
-              // bindings
-              value={characterInfo.level}
-              onChange={e => setCharacterInfo(
-                { ...characterInfo, level: e.target.value }
-              )}
-            />
-          </label>
+          <label htmlFor="level">Level (1-{MAX_LEVEL}):</label>
+
+          <input
+            required
+            type="number"
+            id="level"
+            className="level"
+            max="20"
+            min="1"
+            placeholder="1"
+
+            // bindings
+            value={characterInfo.level}
+            onChange={e => setCharacterInfo(
+              { ...characterInfo, level: e.target.value }
+            )}
+          />
+
+          <div className="grid-filler"></div>
 
           {/* 1.for each category (class, race, etc), generate a dropdown
               2.for each dropdown, generate a list of options 
@@ -127,20 +131,14 @@ function CharacterForm({ formVisible, setFormVisible }) {
             </>
           ))}
 
-          <button
-            id="cancel"
-            className="cancel"
-          >
-            Cancel
-                    </button>
-          <button
-            id="save"
-            className="save"
-            onClick={uploadCharacter}
-          >
-            Save
-                    </button>
         </form>
+        <button
+          id="save"
+          className="save"
+          onClick={uploadCharacter}
+        >
+          Save
+        </button>
       </section>
     </Modal>
   );

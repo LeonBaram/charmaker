@@ -1,5 +1,3 @@
-// sass
-import './styles/App.scss';
 // data
 import { dbref } from './data/firebase';
 import Character from './data/character';
@@ -8,6 +6,8 @@ import { useEffect, useState } from 'react';
 // components
 import CharacterForm from './components/CharacterForm';
 import CharacterDisplay from './components/CharacterDisplay';
+// sass
+import './styles/App.scss';
 
 function App() {
 
@@ -38,7 +38,7 @@ function App() {
             <h2>a simple character creator</h2>
           </div>
           <button
-            className="create"
+            className={`create${formVisible? ' pressed' : ''}`}
             onClick={() => {
               setFormVisible(true);
               console.log(formVisible);
@@ -66,7 +66,7 @@ function App() {
       <footer>
         <div className="wrapper">
           <p>made at <a href="https://junocollege.com/">Juno</a></p>
-          <p>Dungeons and Dragons belongs to <a href="https://company.wizards.com/en">Wizard of the Coast</a>. <br />
+          <p className="dnd">Dungeons and Dragons belongs to <a href="https://company.wizards.com/en">Wizard of the Coast</a>. <br />
         check out their D&D website, <a href="https://www.dndbeyond.com/">dndbeyond</a>.
         </p>
         </div>
