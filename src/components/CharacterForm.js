@@ -1,5 +1,5 @@
 // hooks
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 // data
 import { dbref } from '../data/firebase';
 import descriptions from '../data/descriptions';
@@ -46,7 +46,7 @@ function CharacterForm({ formVisible, setFormVisible }) {
               { ...characterInfo, name: e.target.value }
             )}
           />
-          
+
           {/* my greatest shame. exists purely to make css grid work. */}
           <div className="grid-filler"></div>
 
@@ -77,7 +77,7 @@ function CharacterForm({ formVisible, setFormVisible }) {
               3.for each category, generate a description of the 
                 currently selected dropdown option */}
           {Object.keys(descriptions).map(category => (
-            <div key={category}>
+            <Fragment key={category}>
               <label htmlFor={category}>
                 {/* switch "dndclass" to "class" when presenting to user */}
                 {category === 'dndclass' ? 'class' : category}:
@@ -115,7 +115,7 @@ function CharacterForm({ formVisible, setFormVisible }) {
 
               {/* e.g. descriptions['race']['elf'] */}
               <p>{descriptions[category][characterInfo[category]]}</p>
-            </div>
+            </Fragment>
           ))}
 
         </form>

@@ -1,7 +1,6 @@
 // data
 import { dbref } from './data/firebase';
 import Character from './data/character';
-import { randomCharacterInfo } from './data/character';
 // hooks
 import { useEffect, useState } from 'react';
 // components
@@ -59,7 +58,10 @@ function App() {
 
           <section className="characters">
             {characters.map(character =>
-              <CharacterDisplay character={character} />
+              <CharacterDisplay 
+                character={character} 
+                key={character.firebaseID} 
+              />
             )}
           </section>
         </div>

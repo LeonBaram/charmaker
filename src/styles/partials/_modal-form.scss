@@ -46,7 +46,7 @@ input {
 
   form {
     width: 75%;
-    margin: 0 auto;
+    // margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr 4fr;
     gap: 10px;
@@ -79,6 +79,10 @@ input {
     p {
       position: relative;
       top: -10px;
+    }
+
+    span {
+      border: 1px solid red;
     }
   }
 
