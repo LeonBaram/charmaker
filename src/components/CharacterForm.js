@@ -16,7 +16,7 @@ function CharacterForm({ formVisible, setFormVisible }) {
   if the user submits the form, this object is pushed to the database.
   for convenience and humor reasons, initial states are set to random values.
   */
-  const [characterInfo, setCharacterInfo] = useState(randomCharacterInfo(''));
+  const [characterInfo, setCharacterInfo] = useState(randomCharacterInfo());
 
   const uploadCharacter = () => dbref.characters.push(characterInfo);
 
@@ -124,7 +124,7 @@ function CharacterForm({ formVisible, setFormVisible }) {
           onClick={() => {
             if (characterInfo.name) {
               uploadCharacter();
-              setCharacterInfo(randomCharacterInfo(''));
+              setCharacterInfo(randomCharacterInfo());
               setFormVisible(false);
             }
           }}
