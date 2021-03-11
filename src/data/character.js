@@ -129,8 +129,7 @@ Level set to:`
     }
 }
 
-const randomCharacter = () => {
-    const name = "Gary Gygax";
+const randomCharacter = (name = "Gary Gygax") => {
     const level = Math.ceil(Math.random() * MAX_LEVEL);
     const dndclass = rand(...Object.keys(descriptions.dndclass));
     const race = rand(...Object.keys(descriptions.race));

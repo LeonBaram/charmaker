@@ -7,7 +7,7 @@ function CharacterDisplay({ character }) {
           <div className="wrapper">
             {/* "Gary Gygax, Level 5 Dwarf Rogue" */}
             <h3>
-                {character.name}, level {character.level} {character.race.name} {character.dndclass.name}
+              {character.name}, level {character.level} {character.race.name} {character.dndclass.name}
             </h3>
             <hr />
             <h4>Aptitudes</h4>

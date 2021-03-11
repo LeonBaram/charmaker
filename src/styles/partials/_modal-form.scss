@@ -57,6 +57,10 @@ input {
     justify-content: space-around;
     // justify-items: center;
     align-items: start;
+
+    :not(p) {
+      text-transform: capitalize;
+    }
     
     label {
       text-align: right;
@@ -72,12 +76,33 @@ input {
       text-align: center;
       background: $dark-grey;
       color: $white;
+      padding: 3px;
+      transition: all 0.3s;
     }
 
     p {
-      width: 200px;
       position: relative;
       top: -10px;
+    }
+  }
+
+  .character-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .save {
+    align-self: flex-end;
+    border-radius: 3px;
+    padding: 0 5px;
+    margin: 0 20px 20px 0;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:active,
+    &:hover {
+      background: $dark-grey;
+      color: $white;
     }
   }
 }

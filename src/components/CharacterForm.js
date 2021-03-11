@@ -135,7 +135,12 @@ function CharacterForm({ formVisible, setFormVisible }) {
         <button
           id="save"
           className="save"
-          onClick={uploadCharacter}
+          onClick={() => {
+            if (characterInfo.name) {
+              uploadCharacter();
+              setFormVisible(false);
+            }
+          }}
         >
           Save
         </button>
