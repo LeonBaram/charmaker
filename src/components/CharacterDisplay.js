@@ -12,7 +12,7 @@ function CharacterDisplay({ character }) {
             <p>{character.desc('dndclass')}</p>
             <p>{character.desc('race')}</p>
             <h4>Background: {character.background.name}</h4>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis quibusdam itaque eligendi iure libero laboriosam reprehenderit nihil ea adipisci odit.</p>
+            <p>{character.desc('background')}</p>
           </div>
         </div>
     );

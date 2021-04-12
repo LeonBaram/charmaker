@@ -1,6 +1,6 @@
 // data
 import { dbref } from './data/firebase';
-import Character from './data/character';
+import Character, { randomCharacterInfo } from './data/character';
 // hooks
 import { useEffect, useState } from 'react';
 // components
@@ -26,6 +26,7 @@ function App() {
         tempCharacters.push(character);
       }
       setCharacters(tempCharacters);
+      console.log(tempCharacters);
     })
   }, []);
 
@@ -55,6 +56,14 @@ function App() {
             formVisible={formVisible}
             setFormVisible={setFormVisible}
           />
+
+          {/* <button
+            onClick={() => {
+              for (let i = 0; i < 10; i++) {
+                dbref.characters.push(randomCharacterInfo());
+              }
+            }}
+          >p o p u l a t e</button> */}
 
           <section className="characters">
             {characters.map(character =>

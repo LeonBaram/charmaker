@@ -138,7 +138,7 @@ const names = [
   'Gary',
 ];
 
-const randomCharacterInfo = (name) => ({
+const randomCharacterInfo = (name="") => ({
   name: (name)? name : rand(...names),
   level: Math.ceil(Math.random() * MAX_LEVEL),
   dndclass: rand(...Object.keys(descriptions.dndclass)),

@@ -1,2 +1,21 @@
-- [ ] get font (ubuntu)
-- [ ] get icon (chevron down)
+- [ ] add moderation:
+      - [ ] profanity filter
+            - [ ] disallowed
+                  - [ ] n word
+                  - [ ] bitch
+                  - [ ] faggot
+                  - [ ] slut
+                  - [ ] kike
+                  - [ ] chink
+                  - [ ] gook
+                  - [ ] ddyke
+                  - [ ] tranny
+                  - [ ] spic
+                  - [ ] https://github.com/web-mech/badwords/blob/master/lib/lang.json
+            - [ ] flagged
+                  - [ ] cock
+                  - [ ] pussy
+                  - [ ] ass
+      - [ ] banlist
+            - [ ] account
+            - [ ] IP
