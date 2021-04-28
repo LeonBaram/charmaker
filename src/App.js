@@ -1,22 +1,21 @@
 // data
-import { dbref } from './data/firebase';
-import Character, { randomCharacterInfo } from './data/character';
+import { dbref } from "./data/firebase";
+import Character, { randomCharacterInfo } from "./data/character";
 // hooks
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 // components
-import CharacterForm from './components/CharacterForm';
-import CharacterDisplay from './components/CharacterDisplay';
+import CharacterForm from "./components/CharacterForm";
+import CharacterDisplay from "./components/CharacterDisplay";
 // sass
-import './styles/App.scss';
+import "./styles/App.scss";
 
 function App() {
-
   const [characters, setCharacters] = useState([]);
 
   const [formVisible, setFormVisible] = useState(false);
 
   useEffect(() => {
-    dbref.characters.on('value', (response) => {
+    dbref.characters.on("value", (response) => {
       const data = response.val();
       const tempCharacters = [];
       let character;
@@ -27,7 +26,7 @@ function App() {
       }
       setCharacters(tempCharacters);
       console.log(tempCharacters);
-    })
+    });
   }, []);
 
   return (
@@ -39,7 +38,7 @@ function App() {
             <h2>a simple character creator</h2>
           </div>
           <button
-            className={`create${formVisible ? ' pressed' : ''}`}
+            className={`create${formVisible ? " pressed" : ""}`}
             onClick={() => {
               setFormVisible(true);
               console.log(formVisible);
@@ -51,7 +50,6 @@ function App() {
       </header>
       <main>
         <div className="wrapper">
-
           <CharacterForm
             formVisible={formVisible}
             setFormVisible={setFormVisible}
@@ -66,21 +64,24 @@ function App() {
           >p o p u l a t e</button> */}
 
           <section className="characters">
-            {characters.map(character =>
-              <CharacterDisplay 
-                character={character} 
-                key={character.firebaseID} 
+            {characters.map((character) => (
+              <CharacterDisplay
+                character={character}
+                key={character.firebaseID}
               />
-            )}
+            ))}
           </section>
         </div>
       </main>
       <footer>
         <div className="wrapper">
-          <p>made at <a href="https://junocollege.com/">Juno</a></p>
-          <p className="dnd">Dungeons and Dragons belongs to <a href="https://company.wizards.com/en">Wizard of the Coast</a>. <br />
-        check out their D&D website, <a href="https://www.dndbeyond.com/">dndbeyond</a>.
-        </p>
+          <p>
+            made at <a href="https://junocollege.com/">Juno</a>
+          </p>
+          <p className="dnd">
+            Dungeons and Dragons belongs to{" "}
+            <a href="https://company.wizards.com/en">Wizard of the Coast</a>.
+          </p>
         </div>
       </footer>
     </>
@@ -88,3 +89,5 @@ function App() {
 }
 
 export default App;
+
+//check out their D&D website, <a href="https://www.dndbeyond.com/">dndbeyond</a>
