@@ -44,6 +44,7 @@ Level set to:`
    *  @property {string} dndclass a D&D class (e.g. "wizard")
    *  @property {string} race a D&D race (e.g. "halfling")
    *  @property {string} background a D&D background (e.g. "soldier")
+   *  @property {Date} timestamp this character's time of creation
    */
   constructor({ name, dndclass, race, background, level }) {
 
@@ -73,6 +74,8 @@ Level set to:`
         this.dndclass.level
       );
     }
+
+    this.timestamp = new Date();
   }
 
   /**
@@ -127,6 +130,14 @@ Level set to:`
       level: this.dndclass.level,
     };
   }
+
+  /**
+   * @function compareTimestamps
+   * @param {Character} param0 a Character instance
+   * @param {Character} param1 another Character instance
+   * @returns {boolean} true if the first character has a later timestamp than the second; false otherwise.
+   */
+  static compareTimestamps = ({timestamp: a},{timestamp: b} ) => a > b;
 }
 
 const names = [
