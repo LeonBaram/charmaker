@@ -55,24 +55,21 @@ function App() {
             setFormVisible={setFormVisible}
           />
 
-          {/* <button
+          <button
             onClick={() => {
-              for (let i = 0; i < 10; i++) {
-                dbref.characters.push(randomCharacterInfo());
-              }
+              dbref.characters.push(randomCharacterInfo());
             }}
-          >p o p u l a t e</button> */}
+          >
+            p o p u l a t e
+          </button>
 
           <section className="characters">
-            {characters
-              .sort(Character.compareTimestamps)
-              .map((character) => (
+            {characters.sort(Character.compareTimestamps).map((character) => (
               <CharacterDisplay
                 character={character}
                 key={character.firebaseID}
               />
-              ))
-            }
+            ))}
           </section>
         </div>
       </main>

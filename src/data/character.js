@@ -44,7 +44,14 @@ Level set to:`,
    *  @property {string} background a D&D background (e.g. "soldier")
    *  @property {Date} timestamp this character's time of creation
    */
-  constructor({ name, dndclass, race, background, level }) {
+  constructor({
+    name,
+    dndclass,
+    race,
+    background,
+    level,
+    timestamp,
+  }) {
     if (!level) {
       level = 1;
     }
@@ -69,7 +76,7 @@ Level set to:`,
       console.log(this.errors.MAX_LEVEL, this.dndclass.level);
     }
 
-    this.timestamp = new Date();
+    this.timestamp = new Date(timestamp);
   }
 
   /**
@@ -122,7 +129,7 @@ Level set to:`,
 
   /**
    * @function compareTimestamps
-   * @param {Character} a a Character instance 
+   * @param {Character} a a Character instance
    * @param {Character} b another Character instance
    * @returns {number} the difference in timestamps. A positive number means character "A" was created before character "B"
    */
@@ -137,6 +144,7 @@ const randomCharacterInfo = (name = "") => ({
   dndclass: rand(...Object.keys(descriptions.dndclass)),
   race: rand(...Object.keys(descriptions.race)),
   background: rand(...Object.keys(descriptions.background)),
+  timestamp: (new Date()).toJSON(),
 });
 
 export default Character;
