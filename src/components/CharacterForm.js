@@ -8,9 +8,9 @@ import { MAX_LEVEL, randomCharacterInfo } from '../data/character';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 
-const generateDropdown = (strings, vals = strings) => strings.map(
-  (str, i) => <option value={vals[i]}>{str}</option>
-);
+// const generateDropdown = (strings, vals = strings) => strings.map(
+//   (str, i) => <option value={vals[i]}>{str}</option>
+// );
 
 function CharacterForm({ formVisible, setFormVisible }) {
 

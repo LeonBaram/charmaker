@@ -1,6 +1,6 @@
 // data
 import { dbref } from "./data/firebase";
-import Character, { randomCharacterInfo } from "./data/character";
+import Character from "./data/character";
 // hooks
 import { useEffect, useState } from "react";
 // components
