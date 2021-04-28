@@ -64,12 +64,15 @@ function App() {
           >p o p u l a t e</button> */}
 
           <section className="characters">
-            {characters.map((character) => (
+            {characters
+              .sort(Character.compareTimestamps)
+              .map((character) => (
               <CharacterDisplay
                 character={character}
                 key={character.firebaseID}
               />
-            ))}
+              ))
+            }
           </section>
         </div>
       </main>

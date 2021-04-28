@@ -122,11 +122,11 @@ Level set to:`,
 
   /**
    * @function compareTimestamps
-   * @param {Character} param0 a Character instance
-   * @param {Character} param1 another Character instance
-   * @returns {boolean} true if the first character has a later timestamp than the second; false otherwise.
+   * @param {Character} a a Character instance 
+   * @param {Character} b another Character instance
+   * @returns {number} the difference in timestamps. A positive number means character "A" was created before character "B"
    */
-  static compareTimestamps = ({ timestamp: a }, { timestamp: b }) => a > b;
+  static compareTimestamps = (a, b) => b.timestamp - a.timestamp;
 }
 
 const names = ["Orville", "Jennine", "Cindi", "Kori", "Mari", "Gary"];
