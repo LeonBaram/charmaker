@@ -55,13 +55,13 @@ function App() {
             setFormVisible={setFormVisible}
           />
 
-          <button
+          {/* <button
             onClick={() => {
               dbref.characters.push(randomCharacterInfo());
             }}
           >
             p o p u l a t e
-          </button>
+          </button> */}
 
           <section className="characters">
             {characters.sort(Character.compareTimestamps).map((character) => (
