@@ -1,13 +1,15 @@
 class CharacterJSON {
   name: string;
   timestamp: Date;
-  characterClass: CharacterClass;
-  characterRace: CharacterRace;
-  characterBackground: CharacterBackground;
+  class: Class;
+  race: Race;
+  background: Background;
 }
 
 class Character extends CharacterJSON {
   static MAX_LEVEL = 20;
+
+  id: string;
 
   constructor(info: CharacterJSON) {
     super();
@@ -19,7 +21,7 @@ class Character extends CharacterJSON {
   }
 
   get level(): number {
-    return this.characterClass.level;
+    return this.class.level;
   }
 
   set level(n: number) {
@@ -29,16 +31,16 @@ class Character extends CharacterJSON {
     if (n > Character.MAX_LEVEL) {
       n = Character.MAX_LEVEL;
     }
-    this.characterClass.level = Math.floor(n);
+    this.class.level = Math.floor(n);
   }
 
   toJSON(): CharacterJSON {
     return {
       name: this.name,
       timestamp: this.timestamp,
-      characterClass: this.characterClass,
-      characterRace: this.characterRace,
-      characterBackground: this.characterBackground,
+      class: this.class,
+      race: this.race,
+      background: this.background,
     };
   }
 
@@ -47,20 +49,18 @@ class Character extends CharacterJSON {
   }
 }
 
-type CharacterClass = {
+type Class = {
   name: string;
-  desc: string;
   level: number;
 };
 
-type CharacterRace = {
+type Race = {
   name: string;
-  desc: string;
 };
 
-type CharacterBackground = {
+type Background = {
   name: string;
-  desc: string;
 };
 
 export { Character, CharacterJSON };
+export type { Class, Race, Background };
