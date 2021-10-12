@@ -1,0 +1,103 @@
+input,
+select {
+  border: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+input {
+  border-bottom: 1px solid $grey;
+}
+
+// .modal {
+//   display: block; 
+//   position: fixed;
+//   z-index: 1; 
+//   left: 0;
+//   top: 0;
+//   width: 100%;
+//   height: 100%;
+//   overflow: auto;
+//   background: rgba(100,100,100,0.5);  
+// }
+// .character-form {
+//   margin: 15% auto;
+//   padding: 20px;
+//   border: 3px solid $dark-grey;
+//   width: 50%;
+
+//   h2 {
+//     text-align: center;
+//   }
+//   hr {
+//     margin-bottom: 50px;
+//   }
+// }
+
+.modal {
+
+  border: solid 3px $dark-grey;
+  width: 75%;
+
+  h2 {
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  form {
+    width: 75%;
+    // margin: 0 auto;
+    display: grid;
+    grid: 1fr 1fr;
+    gap: 10px;
+    justify-content: space-around;
+    // justify-items: center;
+    align-items: start;
+
+    :not(p) {
+      text-transform: capitalize;
+    }
+    
+    label {
+      text-align: right;
+    }
+
+    input,  select {
+      width: 100px;
+    }
+  
+    select {
+      border-radius: 3px;
+      text-align: center;
+      background: $dark-grey;
+      color: $white;
+      padding: 3px;
+      transition: all 0.3s;
+    }
+
+    p {
+      grid-column: 1 / 3;
+      margin: 0;
+    }
+  }
+
+  .character-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .save {
+    align-self: flex-end;
+    border-radius: 3px;
+    padding: 0 5px;
+    margin: 0 20px 20px 0;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:active,
+    &:hover {
+      background: $dark-grey;
+      color: $white;
+    }
+  }
+}

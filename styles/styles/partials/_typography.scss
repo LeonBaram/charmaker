@@ -1,0 +1,72 @@
+// font
+$ubuntu: "Ubuntu", sans-serif;
+
+// weights
+$light: 300;
+$regular: 400;
+$medium: 500;
+$bold: 700;
+
+html {
+  font-size: 62.5%;
+  color: $black;
+  letter-spacing: -1.5%;
+}
+
+// default for p, etc.
+* {
+  color: $black;
+  font: 1.4rem $ubuntu;
+}
+
+h1 {
+  font-size: 3.6rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: $light;
+  font-style: italic;
+  margin: 0;
+}
+
+form h2 {
+  text-align: center;
+}
+
+.character {  
+
+  h3 {
+    // font: 1.8rem $ubuntu;
+    font-size: 1.8rem;
+    text-align: center;
+    text-transform: capitalize;
+  }
+  
+  h4 {
+    font-weight: $bold;
+    text-align: center;
+    text-transform: capitalize;
+  }
+}
+
+label {
+  font-weight: $bold;
+}
+
+option {
+  font-weight: $light;
+}
+
+::placeholder {
+  font-weight: $light;
+  font-style: italic;
+}
+
+a {
+  text-decoration: underline;
+}
+
+button {
+  font-size: 1.8rem;
+}

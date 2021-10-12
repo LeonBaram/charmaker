@@ -1,0 +1,42 @@
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid $black;
+  overflow-y: hidden;
+
+  .wrapper {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .heading-block {
+    padding: 0;
+    h1 {
+        margin-bottom: 5px;
+    }
+    h2 {
+        margin: 0;
+    }
+  }
+
+  button.create {
+    border: 1px solid $white;
+    border-radius: 3px;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      background: $dark-grey;
+      color: $white;
+    }
+
+    &.pressed {
+      border: 1px solid $dark-grey;
+      background: $black;
+      color: $white;
+      transform: translate(0, 20px);
+    }
+  }
+}
