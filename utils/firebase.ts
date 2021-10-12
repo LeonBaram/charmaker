@@ -1,5 +1,5 @@
 import { FirebaseOptions, initializeApp } from "firebase/app";
-import { getDatabase, ref, set } from "firebase/database";
+import { DatabaseReference, getDatabase, ref } from "firebase/database";
 
 const firebaseConfig: FirebaseOptions = {
   apiKey: process.env.API_KEY,
@@ -15,11 +15,24 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 // const pathref = path => firebase.database().ref(path);
-const dbref = (path: string) => ref(db, path);
+// const dbref = (path: string) => ref(db, path);
 
-// const dbSections = [
-//   'characters',
-// ];
+const dbSections = [
+  "characters",
+  "default_names",
+  "classes",
+  "races",
+  "backgrounds",
+  "descriptions",
+];
+
+const dbref: {
+  [path: string]: DatabaseReference
+} = {};
+
+for (const section of dbSections) {
+  dbref[section] = ref(db, section);
+}
 
 // const dbref = {root: pathref()};
 // for (let section of dbSections) {
