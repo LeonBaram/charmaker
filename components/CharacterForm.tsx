@@ -4,12 +4,15 @@ import { dbref } from "../utils/firebase";
 import { push } from "firebase/database";
 
 import "react-responsive-modal/styles.css";
-import { Modal } from "react-responsive-modal"
+import { Modal } from "react-responsive-modal";
 import { Character } from "../models";
 
-const dropdown = (options: string[]) => options.map(
-  (option) => <option key={option} value={option}>{option}</option>
-);
+const dropdown = (options: string[]) =>
+  options.map((option) => (
+    <option key={option} value={option}>
+      {option}
+    </option>
+  ));
 
 type CharacterFormProps = {
   formVisible: boolean;
@@ -21,14 +24,7 @@ type CharacterFormProps = {
 };
 
 function CharacterForm(props: CharacterFormProps) {
-  const {
-    formVisible,
-    setFormVisible,
-    classes,
-    races,
-    backgrounds,
-    descriptions,
-  } = props;
+  const { formVisible, setFormVisible, descriptions, ...data } = props;
 
   const [characterInfo, setCharacterInfo] = useState(randomCharacterJSON());
 
@@ -36,13 +32,11 @@ function CharacterForm(props: CharacterFormProps) {
     <Modal
       open={formVisible}
       onClose={() => setFormVisible(false)}
-      classNames={{ modal: 'modal', overlay: 'overlay' }}
+      classNames={{ modal: "modal", overlay: "overlay" }}
     >
-      <section className='character-form'>
-
+      <section className="character-form">
         <h2>A New Hero Rises</h2>
         <form>
-
           <label htmlFor="name">Name:</label>
 
           <input
@@ -51,12 +45,14 @@ function CharacterForm(props: CharacterFormProps) {
             id="name"
             className="name"
             placeholder="Gary Gygax"
-
             // bindings
             value={characterInfo.name}
-            onChange={(e) => setCharacterInfo(
-              { ...characterInfo, name: e.target.value }
-            )}
+            onChange={(e) =>
+              setCharacterInfo((info) => {
+                info.name = e.target.value;
+                return info;
+              })
+            }
           />
 
           <label htmlFor="level">Level (1-{Character.MAX_LEVEL}):</label>
@@ -69,12 +65,13 @@ function CharacterForm(props: CharacterFormProps) {
             max="20"
             min="1"
             placeholder="1"
-
             value={characterInfo.class.level}
-            onChange={(e) => setCharacterInfo((info) => {
-              info.class.level = +e.target.value;
-              return info;
-            })}
+            onChange={(e) =>
+              setCharacterInfo((info) => {
+                info.class.level = +e.target.value;
+                return info;
+              })
+            }
           />
 
           <label htmlFor="class">class</label>
@@ -84,10 +81,12 @@ function CharacterForm(props: CharacterFormProps) {
               name="class"
               id="class"
               value={characterInfo.class.name}
-              onChange={(e) => setCharacterInfo((info) => {
-                info.class.name = e.target.value;
-                return info;
-              })}
+              onChange={(e) =>
+                setCharacterInfo((info) => {
+                  info.class.name = e.target.value;
+                  return info;
+                })
+              }
             >
               {dropdown(classes)}
             </select>
@@ -102,10 +101,12 @@ function CharacterForm(props: CharacterFormProps) {
               name="class"
               id="class"
               value={characterInfo.race.name}
-              onChange={(e) => setCharacterInfo((info) => {
-                info.race.name = e.target.value;
-                return info;
-              })}
+              onChange={(e) =>
+                setCharacterInfo((info) => {
+                  info.race.name = e.target.value;
+                  return info;
+                })
+              }
             >
               {dropdown(races)}
             </select>
@@ -120,10 +121,12 @@ function CharacterForm(props: CharacterFormProps) {
               name="background"
               id="background"
               value={characterInfo.background.name}
-              onChange={(e) => setCharacterInfo((info) => {
-                info.background.name = e.target.value;
-                return info;
-              })}
+              onChange={(e) =>
+                setCharacterInfo((info) => {
+                  info.background.name = e.target.value;
+                  return info;
+                })
+              }
             >
               {dropdown(backgrounds)}
             </select>

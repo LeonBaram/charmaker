@@ -1,10 +1,10 @@
-import Head from 'next/head'
-import React, { useEffect, useState, useRef } from 'react'
-import { dbref } from '../utils/firebase';
-import { onValue, push } from 'firebase/database';
-import { Character, CharacterJSON } from '../models';
-import { CharacterDisplay, CharacterForm } from '../components';
-import { randomCharacterJSON } from '../utils/generate-character';
+import Head from "next/head";
+import React, { useEffect, useState, useRef } from "react";
+import { dbref } from "../utils/firebase";
+import { onValue, push, get } from "firebase/database";
+import { Character, CharacterJSON } from "../models";
+import { CharacterDisplay, CharacterForm } from "../components";
+import { randomCharacterJSON } from "../utils/generate-character";
 
 export default function App() {
 
@@ -110,7 +110,7 @@ export default function App() {
         </div>
       </footer>
     </>
-  )
+  );
 }
 
 export default Home;
