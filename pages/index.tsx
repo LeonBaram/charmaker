@@ -6,13 +6,36 @@ import { Character, CharacterJSON } from "../models";
 import { CharacterDisplay, CharacterForm } from "../components";
 import { randomCharacterJSON } from "../utils/generate-character";
 
-export default function App() {
+type HomeProps = {
+  names: string[];
+  classes: string[];
+  races: string[];
+  backgrounds: string[];
+  descriptions: { [key: string]: string };
+};
 
-  const classes = useRef<string[]>([]);
-  const races = useRef<string[]>([]);
-  const backgrounds = useRef<string[]>([]);
-  const descriptions = useRef<{ [key: string]: string; }>({});
+export async function getStaticProps() {
+  const props: HomeProps = {
+    names: [],
+    classes: [],
+    races: [],
+    backgrounds: [],
+    descriptions: {},
+  };
 
+  const paths = Object.keys(props);
+  const promises = paths.map((path) => get(dbref[path]));
+  const results = await Promise.all(promises);
+
+  for (let path: string, i = 0; i < paths.length; i++) {
+    path = paths[i];
+    props[path] = results[i].val();
+  }
+
+  return { props, revalidate: 30 };
+}
+
+function Home({ names, classes, races, backgrounds, descriptions }: HomeProps) {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [formVisible, setFormVisible] = useState(false);
 
@@ -28,22 +51,6 @@ export default function App() {
       }
       setCharacters(characters);
     });
-
-    onValue(dbref.classes, (snapshot) => {
-      classes.current = Object.values(snapshot.val());
-    }, { onlyOnce: true });
-
-    onValue(dbref.races, (snapshot) => {
-      races.current = Object.values(snapshot.val());
-    }, { onlyOnce: true });
-
-    onValue(dbref.backgrounds, (snapshot) => {
-      backgrounds.current = Object.values(snapshot.val());
-    }, { onlyOnce: true });
-
-    onValue(dbref.descriptions, (snapshot) => {
-      descriptions.current = snapshot.val();
-    }, { onlyOnce: true });
   }, []);
 
   return (
@@ -73,15 +80,19 @@ export default function App() {
           <CharacterForm
             formVisible={formVisible}
             setFormVisible={setFormVisible}
-            classes={classes.current}
-            races={races.current}
-            backgrounds={backgrounds.current}
-            descriptions={descriptions.current}
+            names={names}
+            classes={classes}
+            races={races}
+            backgrounds={backgrounds}
+            descriptions={descriptions}
           />
 
           <button
             onClick={() => {
-              push(dbref.characters, randomCharacterJSON())
+              push(
+                dbref.characters,
+                randomCharacterJSON({ names, classes, races, backgrounds })
+              );
             }}
           >
             p o p u l a t e
@@ -92,7 +103,7 @@ export default function App() {
               <CharacterDisplay
                 character={character}
                 key={character.id}
-                descriptions={descriptions.current}
+                descriptions={descriptions}
               />
             ))}
           </section>

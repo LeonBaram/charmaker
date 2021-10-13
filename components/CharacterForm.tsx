@@ -26,7 +26,9 @@ type CharacterFormProps = {
 function CharacterForm(props: CharacterFormProps) {
   const { formVisible, setFormVisible, descriptions, ...data } = props;
 
-  const [characterInfo, setCharacterInfo] = useState(randomCharacterJSON());
+  const [characterInfo, setCharacterInfo] = useState(randomCharacterJSON(data));
+
+  const { classes, races, backgrounds } = data;
 
   return (
     <Modal
@@ -133,7 +135,6 @@ function CharacterForm(props: CharacterFormProps) {
           </div>
 
           <p>{descriptions[characterInfo.background.name]}</p>
-
         </form>
         <button
           id="save"
@@ -141,7 +142,7 @@ function CharacterForm(props: CharacterFormProps) {
           onClick={() => {
             if (characterInfo.name) {
               push(dbref.characters, characterInfo);
-              setCharacterInfo(randomCharacterJSON());
+              setCharacterInfo(randomCharacterJSON(data));
               setFormVisible(false);
             }
           }}
