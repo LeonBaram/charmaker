@@ -30,6 +30,19 @@ function CharacterForm(props: CharacterFormProps) {
 
   const [characterInfo, setCharacterInfo] = useState(randomCharacterJSON(data));
 
+  type inputEvent = React.ChangeEvent<HTMLInputElement | HTMLSelectElement>;
+
+  const updateInfo = (target: string) => (event: inputEvent) => {
+    const info = { ...characterInfo };
+    const { value } = event.target;
+    if (target === "level") {
+      info.class.level = +value;
+    } else {
+      info[target] = value;
+    }
+    setCharacterInfo(info);
+  };
+
   const { classes, races, backgrounds } = data;
 
   return (
@@ -49,14 +62,8 @@ function CharacterForm(props: CharacterFormProps) {
             id="name"
             className="name"
             placeholder="Gary Gygax"
-            // bindings
             value={characterInfo.name}
-            onChange={(e) =>
-              setCharacterInfo((info) => {
-                info.name = e.target.value;
-                return info;
-              })
-            }
+            onChange={updateInfo("name")}
           />
 
           <label htmlFor="level">Level (1-{Character.MAX_LEVEL}):</label>
@@ -66,16 +73,11 @@ function CharacterForm(props: CharacterFormProps) {
             type="number"
             id="level"
             className="level"
-            max="20"
+            max={Character.MAX_LEVEL}
             min="1"
             placeholder="1"
             value={characterInfo.class.level}
-            onChange={(e) =>
-              setCharacterInfo((info) => {
-                info.class.level = +e.target.value;
-                return info;
-              })
-            }
+            onChange={updateInfo("level")}
           />
 
           <label htmlFor="class">class</label>
@@ -85,12 +87,7 @@ function CharacterForm(props: CharacterFormProps) {
               name="class"
               id="class"
               value={characterInfo.class.name}
-              onChange={(e) =>
-                setCharacterInfo((info) => {
-                  info.class.name = e.target.value;
-                  return info;
-                })
-              }
+              onChange={updateInfo("class")}
             >
               {dropdown(classes)}
             </select>
@@ -105,12 +102,7 @@ function CharacterForm(props: CharacterFormProps) {
               name="class"
               id="class"
               value={characterInfo.race.name}
-              onChange={(e) =>
-                setCharacterInfo((info) => {
-                  info.race.name = e.target.value;
-                  return info;
-                })
-              }
+              onChange={updateInfo("class")}
             >
               {dropdown(races)}
             </select>
@@ -125,12 +117,7 @@ function CharacterForm(props: CharacterFormProps) {
               name="background"
               id="background"
               value={characterInfo.background.name}
-              onChange={(e) =>
-                setCharacterInfo((info) => {
-                  info.background.name = e.target.value;
-                  return info;
-                })
-              }
+              onChange={updateInfo("background")}
             >
               {dropdown(backgrounds)}
             </select>
