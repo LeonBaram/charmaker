@@ -49,7 +49,7 @@ function Home({ names, classes, races, backgrounds, descriptions }: HomeProps) {
         character.id = id;
         characters.push(character);
       }
-      setCharacters(characters);
+      setCharacters(characters.reverse());
     });
   }, []);
 
