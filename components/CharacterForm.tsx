@@ -52,7 +52,8 @@ function CharacterForm(props: CharacterFormProps) {
             // bindings
             value={characterInfo.name}
             onChange={(e) =>
-              setCharacterInfo((info) => {
+              setCharacterInfo((prev) => {
+                const info = { ...prev };
                 info.name = e.target.value;
                 return info;
               })
@@ -71,7 +72,8 @@ function CharacterForm(props: CharacterFormProps) {
             placeholder="1"
             value={characterInfo.class.level}
             onChange={(e) =>
-              setCharacterInfo((info) => {
+              setCharacterInfo((prev) => {
+                const info = { ...prev };
                 info.class.level = +e.target.value;
                 return info;
               })
@@ -86,7 +88,8 @@ function CharacterForm(props: CharacterFormProps) {
               id="class"
               value={characterInfo.class.name}
               onChange={(e) =>
-                setCharacterInfo((info) => {
+                setCharacterInfo((prev) => {
+                  const info = { ...prev };
                   info.class.name = e.target.value;
                   return info;
                 })
@@ -106,7 +109,8 @@ function CharacterForm(props: CharacterFormProps) {
               id="class"
               value={characterInfo.race.name}
               onChange={(e) =>
-                setCharacterInfo((info) => {
+                setCharacterInfo((prev) => {
+                  const info = { ...prev };
                   info.race.name = e.target.value;
                   return info;
                 })
@@ -126,7 +130,8 @@ function CharacterForm(props: CharacterFormProps) {
               id="background"
               value={characterInfo.background.name}
               onChange={(e) =>
-                setCharacterInfo((info) => {
+                setCharacterInfo((prev) => {
+                  const info = { ...prev };
                   info.background.name = e.target.value;
                   return info;
                 })
