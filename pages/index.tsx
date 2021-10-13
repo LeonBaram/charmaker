@@ -1,10 +1,9 @@
 import Head from "next/head";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { dbref } from "../utils/firebase";
-import { onValue, push, get } from "firebase/database";
+import { onValue, get } from "firebase/database";
 import { Character, CharacterJSON } from "../models";
 import { CharacterDisplay, CharacterForm } from "../components";
-import { randomCharacterJSON } from "../utils/generate-character";
 
 type HomeProps = {
   names: string[];
@@ -87,7 +86,7 @@ function Home({ names, classes, races, backgrounds, descriptions }: HomeProps) {
             descriptions={descriptions}
           />
 
-          <button
+          {/* <button
             onClick={() => {
               push(
                 dbref.characters,
@@ -96,7 +95,7 @@ function Home({ names, classes, races, backgrounds, descriptions }: HomeProps) {
             }}
           >
             p o p u l a t e
-          </button>
+          </button> */}
 
           <section className="characters">
             {characters.sort(Character.compareTimestamps).map((character) => (
