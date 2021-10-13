@@ -3,8 +3,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { dbref } from '../utils/firebase';
 import { onValue, push } from 'firebase/database';
 import { Character, CharacterJSON } from '../models';
-import { CharacterDisplay } from './CharacterDisplay';
-import { CharacterForm } from './CharacterForm';
+import { CharacterDisplay, CharacterForm } from '../components';
 import { randomCharacterJSON } from '../utils/generate-character';
 
 export default function App() {
