@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
-import { dbref } from "../utils/firebase";
+import { dbref } from "../utils";
 import { onValue, get } from "firebase/database";
 import { Character, CharacterJSON } from "../models";
 import { CharacterDisplay, CharacterForm } from "../components";

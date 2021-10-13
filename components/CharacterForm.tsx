@@ -1,6 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { randomCharacterJSON } from "../utils/generate-character";
-import { dbref } from "../utils/firebase";
+import { dbref, randomCharacterJSON, hasBadWords } from "../utils";
 import { push } from "firebase/database";
 
 import "react-responsive-modal/styles.css";
