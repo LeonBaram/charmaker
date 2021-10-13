@@ -21,10 +21,12 @@ type CharacterFormProps = {
   races: string[];
   backgrounds: string[];
   descriptions: { [key: string]: string };
+  wordfilter: string[];
 };
 
 function CharacterForm(props: CharacterFormProps) {
-  const { formVisible, setFormVisible, descriptions, ...data } = props;
+  const { formVisible, setFormVisible, descriptions, wordfilter, ...data } =
+    props;
 
   const [characterInfo, setCharacterInfo] = useState(randomCharacterJSON(data));
 
@@ -139,6 +141,7 @@ function CharacterForm(props: CharacterFormProps) {
         <button
           id="save"
           className="save"
+          disabled={hasBadWords(characterInfo.name ?? "", wordfilter)}
           onClick={() => {
             if (characterInfo.name) {
               push(dbref.characters, characterInfo);

@@ -36,7 +36,14 @@ export async function getStaticProps() {
   return { props, revalidate: 30 };
 }
 
-function Home({ names, classes, races, backgrounds, descriptions }: HomeProps) {
+function Home({
+  names,
+  classes,
+  races,
+  backgrounds,
+  descriptions,
+  wordfilter,
+}: HomeProps) {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [formVisible, setFormVisible] = useState(false);
 
@@ -86,6 +93,7 @@ function Home({ names, classes, races, backgrounds, descriptions }: HomeProps) {
             races={races}
             backgrounds={backgrounds}
             descriptions={descriptions}
+            wordfilter={wordfilter}
           />
 
           {/* <button
