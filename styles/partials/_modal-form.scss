@@ -10,15 +10,15 @@ input {
 }
 
 // .modal {
-//   display: block; 
+//   display: block;
 //   position: fixed;
-//   z-index: 1; 
+//   z-index: 1;
 //   left: 0;
 //   top: 0;
 //   width: 100%;
 //   height: 100%;
 //   overflow: auto;
-//   background: rgba(100,100,100,0.5);  
+//   background: rgba(100,100,100,0.5);
 // }
 // .character-form {
 //   margin: 15% auto;
@@ -35,7 +35,6 @@ input {
 // }
 
 .modal {
-
   border: solid 3px $dark-grey;
   width: 75%;
 
@@ -57,15 +56,16 @@ input {
     :not(p) {
       text-transform: capitalize;
     }
-    
+
     label {
       text-align: right;
     }
 
-    input,  select {
+    input,
+    select {
       width: 100px;
     }
-  
+
     select {
       border-radius: 3px;
       text-align: center;
@@ -98,6 +98,10 @@ input {
     &:hover {
       background: $dark-grey;
       color: $white;
+    }
+    &:disabled {
+      pointer-events: none;
+      color: $grey;
     }
   }
 }
