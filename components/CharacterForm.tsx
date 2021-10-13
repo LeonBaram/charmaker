@@ -35,7 +35,10 @@ function CharacterForm(props: CharacterFormProps) {
   return (
     <Modal
       open={formVisible}
-      onClose={() => setFormVisible(false)}
+      onClose={() => {
+        setFormVisible(false);
+        setTimeout(() => setCharacterInfo(randomCharacterJSON(data)), 750);
+      }}
       classNames={{ modal: "modal", overlay: "overlay" }}
     >
       <section className="character-form">
@@ -151,7 +154,6 @@ function CharacterForm(props: CharacterFormProps) {
             if (characterInfo.name) {
               characterInfo.timestamp = Date.now();
               push(dbref.characters, characterInfo);
-              setCharacterInfo(randomCharacterJSON(data));
               setFormVisible(false);
             }
           }}
