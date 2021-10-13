@@ -1,2 +1,2 @@
-export { Character, CharacterJSON } from "./Character";
-export type { Class, Race, Background } from "./Character";
+export { Character } from "./Character";
+export type { CharacterJSON, Class, Race, Background } from "./Character";

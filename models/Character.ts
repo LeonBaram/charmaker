@@ -1,4 +1,4 @@
-class CharacterJSON {
+interface CharacterJSON {
   name: string;
   timestamp: Date;
   class: Class;
@@ -6,13 +6,17 @@ class CharacterJSON {
   background: Background;
 }
 
-class Character extends CharacterJSON {
+class Character implements CharacterJSON {
   static MAX_LEVEL = 20;
+  name: string;
+  timestamp: Date;
+  class: Class;
+  race: Race;
+  background: Background;
 
   id: string;
 
   constructor(info: CharacterJSON) {
-    super();
     Object.assign(this, info);
 
     if (this.level === undefined) {
@@ -62,5 +66,5 @@ type Background = {
   name: string;
 };
 
-export { Character, CharacterJSON };
-export type { Class, Race, Background };
+export { Character };
+export type { CharacterJSON, Class, Race, Background };
