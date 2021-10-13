@@ -17,6 +17,7 @@ const dropdown = (options: string[]) =>
 type CharacterFormProps = {
   formVisible: boolean;
   setFormVisible: Dispatch<SetStateAction<boolean>>;
+  names: string[];
   classes: string[];
   races: string[];
   backgrounds: string[];

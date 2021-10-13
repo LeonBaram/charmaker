@@ -19,7 +19,7 @@ const db = getDatabase(app);
 
 const dbSections = [
   "characters",
-  "default_names",
+  "names",
   "classes",
   "races",
   "backgrounds",
