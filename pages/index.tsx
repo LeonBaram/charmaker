@@ -11,6 +11,7 @@ type HomeProps = {
   races: string[];
   backgrounds: string[];
   descriptions: { [key: string]: string };
+  wordfilter: string[];
 };
 
 export async function getStaticProps() {
@@ -20,6 +21,7 @@ export async function getStaticProps() {
     races: [],
     backgrounds: [],
     descriptions: {},
+    wordfilter: [],
   };
 
   const paths = Object.keys(props);

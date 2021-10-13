@@ -1,5 +1,6 @@
 import { FirebaseOptions, initializeApp } from "firebase/app";
 import { DatabaseReference, getDatabase, ref } from "firebase/database";
+import { CharacterJSON } from "../models";
 
 const firebaseConfig: FirebaseOptions = {
   apiKey: process.env.API_KEY,
@@ -14,24 +15,22 @@ const firebaseConfig: FirebaseOptions = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-// const pathref = path => firebase.database().ref(path);
-// const dbref = (path: string) => ref(db, path);
-
-const dbSections = [
+const dbPaths = [
   "characters",
   "names",
   "classes",
   "races",
   "backgrounds",
   "descriptions",
+  "wordfilter",
 ];
 
 const dbref: {
   [path: string]: DatabaseReference;
 } = { root: ref(db) };
 
-for (const section of dbSections) {
-  dbref[section] = ref(db, section);
+for (const path of dbPaths) {
+  dbref[path] = ref(db, path);
 }
 
 export { dbref };
