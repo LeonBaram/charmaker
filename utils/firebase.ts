@@ -27,16 +27,11 @@ const dbSections = [
 ];
 
 const dbref: {
-  [path: string]: DatabaseReference
-} = {};
+  [path: string]: DatabaseReference;
+} = { root: ref(db) };
 
 for (const section of dbSections) {
   dbref[section] = ref(db, section);
 }
-
-// const dbref = {root: pathref()};
-// for (let section of dbSections) {
-//   dbref[section] = pathref(section);
-// }
 
 export { dbref };

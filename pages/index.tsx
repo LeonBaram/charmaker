@@ -11,9 +11,7 @@ export default function App() {
   const classes = useRef<string[]>([]);
   const races = useRef<string[]>([]);
   const backgrounds = useRef<string[]>([]);
-  const descriptions = useRef<{
-    [key: string]: string;
-  }>({});
+  const descriptions = useRef<{ [key: string]: string; }>({});
 
   const [characters, setCharacters] = useState<Character[]>([]);
   const [formVisible, setFormVisible] = useState(false);
@@ -114,3 +112,5 @@ export default function App() {
     </>
   )
 }
+
+export default Home;
