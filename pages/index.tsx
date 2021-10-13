@@ -57,7 +57,8 @@ function Home({
         character.id = id;
         characters.push(character);
       }
-      setCharacters(characters.reverse());
+      characters.sort(Character.compareTimestamps);
+      setCharacters(characters);
     });
   }, []);
 
@@ -108,7 +109,7 @@ function Home({
           </button> */}
 
           <section className="characters">
-            {characters.sort(Character.compareTimestamps).map((character) => (
+            {characters.map((character) => (
               <CharacterDisplay
                 character={character}
                 key={character.id}

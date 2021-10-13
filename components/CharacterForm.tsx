@@ -149,6 +149,7 @@ function CharacterForm(props: CharacterFormProps) {
           disabled={hasBadWords(characterInfo.name ?? "", wordfilter)}
           onClick={() => {
             if (characterInfo.name) {
+              characterInfo.timestamp = Date.now();
               push(dbref.characters, characterInfo);
               setCharacterInfo(randomCharacterJSON(data));
               setFormVisible(false);

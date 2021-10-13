@@ -1,6 +1,6 @@
 interface CharacterJSON {
   name: string;
-  timestamp: Date;
+  timestamp: number;
   class: Class;
   race: Race;
   background: Background;
@@ -9,7 +9,7 @@ interface CharacterJSON {
 class Character implements CharacterJSON {
   static MAX_LEVEL = 20;
   name: string;
-  timestamp: Date;
+  timestamp: number;
   class: Class;
   race: Race;
   background: Background;

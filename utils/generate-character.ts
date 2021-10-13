@@ -27,7 +27,7 @@ const randomCharacterJSON =
     class: randomClass(seed.classes),
     race: randomRace(seed.races),
     background: randomBackground(seed.backgrounds),
-    timestamp: new Date(),
+    timestamp: Date.now(),
   });
 
 export { randomCharacterJSON };
