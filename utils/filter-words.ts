@@ -1,6 +1,4 @@
-function hasBadWords(input: string, badwords: string[]): boolean {
-  input = input.toLowerCase();
-  return badwords.some(word => input.includes(word.toLowerCase()));
-}
+const hasBadWords = (input: string, badwords: string[]): boolean =>
+  badwords.some((word) => input.toLowerCase().includes(word.toLowerCase()));
 
 export { hasBadWords };
