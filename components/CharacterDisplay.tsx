@@ -10,7 +10,7 @@ type CharacterDisplayProps = {
 function CharacterDisplay(props: CharacterDisplayProps) {
   const { character, descriptions } = props;
   return (
-    <div className="character">
+    <div className="character-display">
       <div className="wrapper">
         {/* "Gary Gygax, Level 5 Dwarf Rogue" */}
         <h3>
